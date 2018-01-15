@@ -11,7 +11,7 @@ module.exports = function (options) {
   function setToken (msg, done) {
     var tokenkey = msg.tokenkey || options.tokenkey
     var token = msg.token
-    var res = this.fixedargs.res$
+    var res = msg.res
 
     res.set(tokenkey, token)
     done(null, {token: token})
@@ -19,7 +19,7 @@ module.exports = function (options) {
 
   function getToken (msg, done) {
     var tokenkey = msg.tokenkey || options.tokenkey
-    var req = this.fixedargs.req$
+    var req = msg.req
     done(null, {token: req.get(tokenkey)})
   }
 
